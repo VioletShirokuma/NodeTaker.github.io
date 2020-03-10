@@ -3,25 +3,21 @@ const fs = require("fs");
 
 module.exports = function(app) {
   app.get("/api/notes", (req, res) => {
-    fs.readFile (err, data) => {
+    fs.readFile("db.json", (err, data) => {
       if (err) throw err;
       res.json(JSON.parse(data));
     });
   });
 
-
-
-
-
-//new note
+  //new note
   app.post("/api/notes", function(req, res) {
     let userArray = [];
     let userNote = req.body;
 
-    fs.readFile (err, data) => {
+
+    fs.readFile("db.json", (err, data) => {
       if (err) throw err;
       userArray = JSON.parse(data);
-      
       if (userArray === 0) {
         let id = 0;
       }
@@ -31,24 +27,27 @@ module.exports = function(app) {
       } else {
         id = 0;
       }
-      userNote.id = id += 1;
-      userArray.push(userNote); 
-      
 
-      fs.writeFile(JSON.stringify(userArray, null, 2), err => {
+      userNote.id = id += 1;
+      userArray.push(userNote); //push new note to json
+
+
+      fs.writeFile("db.json", JSON.stringify(userArray, null, 2), err => {
         if (err) throw err;
       });
     });
+
       res.json(userNote);
   });
 
 
 
-  //Delete
+
+  //delete
   app.delete("/api/notes/:id", (req, res) => {
     let selected = parseInt(req.params.id);
 
-    fs.readFile(err, data) => {
+    fs.readFile("db.json", (err, data) => {
       if (err) throw err;
       userArray = JSON.parse(data);
 
@@ -57,7 +56,7 @@ module.exports = function(app) {
           res.json(userArray.splice(i, 1));
         }
       }
-      fs.writeFile(JSON.stringify(userArray, null, 2), err => {
+      fs.writeFile("db.json", JSON.stringify(userArray, null, 2), err => {
         if (err) throw err;
         console.log(`Deleted Note #${selected}`)
       });
