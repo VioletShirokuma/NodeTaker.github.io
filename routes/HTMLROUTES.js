@@ -5,12 +5,12 @@ module.exports = function(app){
         res.sendFile(path.join(__dirname, "../public/notes.html"))
     });
 
-    app.get("index.js", function(req, res){
-        res.sendFile(path.join(__dirname, "../public/index.js")); 
+    app.get("../public/assets/index.js", function(req, res){
+        res.sendFile(path.join(__dirname, "../public/assets/index.js")); 
     });
 
-    app.get("style.css", function(req, res){
-        res.sendFile(path.join(__dirname, "../public/style.css")); 
+    app.get("../public/assets/style.css", function(req, res){
+        res.sendFile(path.join(__dirname, "../public/assets/style.css")); 
     });
 
     app.get("*", function(req,res){
