@@ -7,6 +7,7 @@ var $noteList = $(".list-container .list-group");
 
 var activeNote = {};
 
+
 var getNotes = function() {
   return $.ajax({
     url: "/api/notes",
@@ -14,8 +15,6 @@ var getNotes = function() {
   });
 };
 
-
-//save
 var saveNote = function(note) {
   return $.ajax({
     url: "/api/notes",
@@ -25,16 +24,12 @@ var saveNote = function(note) {
 };
 
 
-
-//delete
 var deleteNote = function(id) {
   return $.ajax({
     url: "api/notes/" + id,
     method: "DELETE"
   });
 };
-
-
 
 
 var renderActiveNote = function() {
@@ -54,10 +49,6 @@ var renderActiveNote = function() {
 };
 
 
-
-
-
-//update
 var handleNoteSave = function() {
   var newNote = {
     title: $noteTitle.val(),
@@ -71,11 +62,8 @@ var handleNoteSave = function() {
 };
 
 
-
-
-
 var handleNoteDelete = function(event) {
-    //stopPropogation: Prevents
+  
   event.stopPropagation();
 
   var note = $(this)
@@ -93,20 +81,16 @@ var handleNoteDelete = function(event) {
 };
 
 
-//display
 var handleNoteView = function() {
   activeNote = $(this).data();
   renderActiveNote();
 };
 
-//new note for empty selected note
+
 var handleNewNoteView = function() {
   activeNote = {};
   renderActiveNote();
 };
-
-
-
 
 
 var handleRenderSaveBtn = function() {
@@ -138,9 +122,6 @@ var renderNoteList = function(notes) {
 
   $noteList.append(noteListItems);
 };
-
-
-
 
 
 var getAndRenderNotes = function() {
