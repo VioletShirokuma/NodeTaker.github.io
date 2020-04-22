@@ -10,7 +10,8 @@ DEPLOYED APPLICATION: (Not Complete)
 
 ![GitHub Logo](/Screenshot1.png)
 
-
+<h2>Instructions:</h2>
+Fork or download this project - open server.js file, and run the command "node server.js" -- head to the local host and utilize the app!
 
 <h2>Utilizations:</h2>
 
