@@ -9,22 +9,15 @@ module.exports = function(app) {
     });
   });
 
-
-
-
-  //new
+ 
   app.post("/api/notes", function(req, res) {
     let userArray = [];
     let userNote = req.body;
 
-
-
-
-
     fs.readFile("db/db.json", (err, data) => {
       if (err) throw err;
       userArray = JSON.parse(data);
-
+  
       if (userArray === 0) {
         let id = 0;
       }
@@ -37,8 +30,6 @@ module.exports = function(app) {
       userNote.id = id += 1;
       userArray.push(userNote); 
 
-
-
       fs.writeFile("db/db.json", JSON.stringify(userArray, null, 2), err => {
         if (err) throw err;
       });
@@ -46,11 +37,7 @@ module.exports = function(app) {
       res.json(userNote);
   });
 
-
-
-
-
-  //Delete
+ 
   app.delete("/api/notes/:id", (req, res) => {
     let selected = parseInt(req.params.id);
 
